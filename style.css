@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+body {
+    overflow: hidden;
+    /*background-color: #447879;*/
+    font-family: 'Dancing Script', cursive;
+}
+
+.message {
+    background-color: #447879;
+    height: 100vh;
+}
+
+.box {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+}
+
+.box:before {
+    position: absolute;
+    content: '';
+    background-color: #e69c9f;
+    width: 200px;
+    height: 200px;
+    bottom: 0;
+    left: 0;
+    clip-path: polygon(0 40%, 50% 0, 100% 40%, 100% 100%, 0 100%);
+}
+
+.box:after {
+    position: absolute;
+    content: '';
+    background-color: #000;
+    height: 10px;
+    bottom: -30px;
+    opacity: 0.4;
+    filter: blur(10px);
+}
+
+.content {
+    position: absolute;
+    background-color: #f2eee4;
+    width: 130%;
+    left: 100%;
+    bottom: 0;
+    transform: translate(-50%, -10px);
+    height: 140px;
+    transition: 0.5s;
+}
+
+.designBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 123px;
+    background-color: #d26f72;
+    display: block;
+    clip-path: polygon(0 0, 50% 35%, 100% 0, 100% 100%, 0 100%);
+}
+
+.designBox:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65%;
+    background-color: #bd5559;
+    content: '';
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+/*.box:hover .content{*/
+/*    transform: translate(-35%,-30px);*/
+/*}*/
+input {
+    position: absolute;
+    left: -10px;
+    opacity: 0;
+}
+
+input:checked ~ .content {
+    bottom: 200px;
+    width: 600px;
+    height: 800px;
+    margin: 0;
+    left: 0;
+    transform: translate(-35%);
+}
+
+.content .title {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 38px;
+    display: none;
+}
+
+.content .desc {
+    padding: 10px 20px;
+    display: none;
+    font-size: 32px;
+}
+
+.content label {
+    width: 100%;
+    text-align: center;
+    display: block;
+    display: none;
+    font-size: 32px;
+    margin-top: 16px;
+}
+
+.content img {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    display: none;
+}
+
+input:checked ~ .content img,
+input:checked ~ .content label,
+input:checked ~ .content .title,
+input:checked ~ .content .desc {
+    display: block;
+    opacity: 0;
+    animation: showContent 1s ease-in-out 0.5s forwards;
+}
+
+input:checked ~ .title {
+    animation-delay: 0.7s !important;
+}
+
+input:checked ~ .desc {
+    animation-delay: 0.9s !important;
+}
+
+input:checked ~ label {
+    animation-delay: 1.1s !important;
+}
+
+@keyframes showContent {
+    from {
+        opacity: 0;
+        transform: translate(0, 50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
